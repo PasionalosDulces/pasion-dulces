@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasión a los Dulces | Tienda Fitness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #2e7d32;     /* Verde Fitness */
+            --accent: #d4a373;      /* Dorado/Galleta */
+            --bg: #FAFAF5;          /* Crema muy suave */
+            --text: #333333;
+            --white: #ffffff;
+            --grey-light: #f4f4f4;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding-bottom: 80px; /* Espacio para el botón flotante */
+        }
+
+        /* --- 1. BARRA SUPERIOR (ANUNCIO) --- */
+        .top-bar {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* --- 2. NAVEGACIÓN --- */
+        nav {
+            background: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container img { height: 50px; }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        /* --- 3. HERO (PORTADA) --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('alfajor.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin: 0 0 15px 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* --- 4. ICONOS DE BENEFICIOS --- */
+        .benefits {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 20px;
+            background: white;
+            flex-wrap: wrap;
+        }
+
+        .benefit-item {
+            text-align: center;
+            width: 150px;
+        }
+
+        .benefit-item i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .benefit-item h4 { margin: 0; font-size: 0.9rem; color: var(--primary); }
+
+        /* --- 5. TIENDA (GRID) --- */
+        .shop-section {
+            padding: 50px 5%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--primary);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* --- TARJETA DE PRODUCTO PRO --- */
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            position: relative;
+            border: 1px solid #eee;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+
+        /* Etiqueta Flotante */
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 20px;
+            z-index: 10;
+        }
+
+        /* Imagen con filtro corrector */
+        .card-img-container {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(1.15) contrast(1.1); /* Corrección de luz */
+            transition: transform 0.5s;
+        }
+
+        .card:hover img { transform: scale(1.05); }
+
+        .card-body { padding: 20px; }
+
+        .card-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .card h3 { margin: 0; font-size: 1.2rem; }
+        .price { font-weight: 700; color: var(--primary); font-size: 1.1rem; }
+
+        .desc { font-size: 0.9rem; color: #666; margin-bottom: 20px; min-height: 40px;}
+
+        /* --- TABLA DE MACROS --- */
+        .macros {
+            background: var(--grey-light);
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            font-size: 0.75rem;
+            text-align: center;
+        }
+
+        .macro-item strong { display: block; font-size: 0.9rem; color: var(--text); }
+        .macro-item span { color: #888; }
+
+        /* Botón Comprar */
+        .btn-buy {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-buy:hover { background: #1b5e20; }
+
+        /* --- SOBRE MÍ INTEGRADO --- */
+        .about-compact {
+            background: white;
+            margin-top: 60px;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+        .about-compact p { max-width: 700px; margin: auto; line-height: 1.8; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            font-size: 0.85rem;
+        }
+
+        /* --- WHATSAPP FLOTANTE --- */
+        .wsp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+        .wsp-float:hover { transform: scale(1.1); }
+
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        🚚 ENTREGAS EN LIMA | PEDIDOS CON 24H DE ANTICIPACIÓN
+    </div>
+
+    <nav>
+        <div class="logo-container">
+            <img src="logo.png" alt="Pasión a los Dulces">
+        </div>
+        <div class="nav-menu">
+            <a href="#catalogo">Catálogo</a>
+            <a href="#nosotros">Filosofía</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Ingeniería del Sabor</h1>
+        <p>Postres diseñados milimétricamente para cumplir tus macros.</p>
+        <a href="#catalogo" class="btn-buy" style="display:inline-block; width:auto; padding: 15px 40px;">VER TIENDA</a>
+    </header>
+
+    <section class="benefits">
+        <div class="benefit-item">
+            <i class="fas fa-dumbbell"></i>
+            <h4>Alto en Proteína</h4>
+        </div>
+        <div class="benefit-item">
+            <i class="fas fa-leaf"></i>
+            <h4>100% Natural</h4>
+        </div>
+        <div class="benefit-item">
+            <i class="fas fa-ban"></i>
+            <h4>Sin Azúcar</h4>
+        </div>
+        <div class="benefit-item">
+            <i class="fas fa-calculator"></i>
+            <h4>Macros Exactos</h4>
+        </div>
+    </section>
+
+    <section id="catalogo" class="shop-section">
+        <h2 class="section-title">Nuestra Selección</h2>
+        
+        <div class="grid">
+            
+            <div class="card">
+                <div class="badge">BEST SELLER</div>
+                <div class="card-img-container">
+                    <img src="alfajor.jpg" alt="Alfajores Proteicos">
+                </div>
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3>Alfajores Fit (x6)</h3>
+                        <span class="price">S/ 25.00</span>
+                    </div>
+                    <p class="desc">Relleno abundante de manjar light, masa de harina de almendras y whey protein.</p>
+                    
+                    <div class="macros">
+                        <div class="macro-item"><strong>12g</strong><span>Prot</span></div>
+                        <div class="macro-item"><strong>8g</strong><span>Grasa</span></div>
+                        <div class="macro-item"><strong>15g</strong><span>Carbs</span></div>
+                        <div class="macro-item"><strong>180</strong><span>Kcal</span></div>
+                    </div>
+
+                    <a href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20la%20caja%20de%20Alfajores" class="btn-buy">AGREGAR AL PEDIDO</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="badge" style="background-color: #555;">NUEVO</div>
+                <div class="card-img-container">
+                    <img src="galleta.jpg" alt="Galletas Proteicas">
+                </div>
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3>Cookies Chips (x4)</h3>
+                        <span class="price">S/ 18.00</span>
+                    </div>
+                    <p class="desc">Crujientes y chiclosas. Chocolate al 70% y endulzadas con eritritol.</p>
+                    
+                    <div class="macros">
+                        <div class="macro-item"><strong>8g</strong><span>Prot</span></div>
+                        <div class="macro-item"><strong>6g</strong><span>Grasa</span></div>
+                        <div class="macro-item"><strong>12g</strong><span>Carbs</span></div>
+                        <div class="macro-item"><strong>140</strong><span>Kcal</span></div>
+                    </div>
+
+                    <a href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20las%20Galletas" class="btn-buy">AGREGAR AL PEDIDO</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="badge" style="background-color: #d62828;">OFERTA</div>
+                <div class="card-img-container">
+                    <img src="brownie.jpg" alt="Brownie Fit">
+                </div>
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3>Brownie Fudgy (Unid)</h3>
+                        <span class="price">S/ 8.00</span>
+                    </div>
+                    <p class="desc">Intenso sabor a cacao, textura húmeda. Hecho a base de camote.</p>
+                    
+                    <div class="macros">
+                        <div class="macro-item"><strong>10g</strong><span>Prot</span></div>
+                        <div class="macro-item"><strong>5g</strong><span>Grasa</span></div>
+                        <div class="macro-item"><strong>20g</strong><span>Carbs</span></div>
+                        <div class="macro-item"><strong>160</strong><span>Kcal</span></div>
+                    </div>
+
+                    <a href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20Brownies" class="btn-buy">AGREGAR AL PEDIDO</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="nosotros" class="about-compact">
+        <h2 style="font-family:'Playfair Display'; margin-bottom:20px;">Detrás de la Marca</h2>
+        <p>Soy estudiante de <strong>Ingeniería Industrial y apasionado del fitness</strong>. Creé "Pasión a los Dulces" porque me cansé de los snacks "saludables" que mentían en sus ingredientes. Aquí aplico la ingeniería para optimizar recetas: máximo sabor, mejores macros y cero culpa.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Pasión a los Dulces | Lima, Perú</p>
+        <p style="font-size: 0.7rem; color: #888;">Diseñado para atletas y amantes del dulce.</p>
+    </footer>
+
+    <a href="https://wa.me/51999999999" class="wsp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
